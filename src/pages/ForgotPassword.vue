@@ -46,12 +46,12 @@ export default defineComponent({
 
     const email = ref('')
 
-    const { notifyError, notifySucces } = useNotify()
+    const { notifyError, notifySuccess } = useNotify()
 
     const handleForgotPassword = async () => {
       try {
         await sendPasswordRestEmail(email.value)
-        notifySucces(`Password reset email sent to: ${email.value}`)
+        notifySuccess(`Password reset email sent to: ${email.value}`)
       } catch (error) {
         notifyError(error.message)
       }

@@ -81,7 +81,7 @@ export default defineComponent({
           query: { email: form.value.email }
         })
       } catch (error) {
-        notifyError(error)
+        notifyError(error.message)
       }
     }
 

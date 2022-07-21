@@ -42,12 +42,12 @@ export default defineComponent({
 
     const password = ref('')
 
-    const { notifyError, notifySucces } = useNotify()
+    const { notifyError, notifySuccess } = useNotify()
 
     const handlePasswordReset = async () => {
       try {
         await resetPassword(token, password.value)
-        notifySucces('New password sent successfully!')
+        notifySuccess('New password sent successfully!')
         router.push({ name: 'login' })
       } catch (error) {
         notifyError(error.message)
