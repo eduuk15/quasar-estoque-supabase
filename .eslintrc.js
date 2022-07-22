@@ -27,14 +27,14 @@ module.exports = {
     // 'plugin:vue/vue3-recommended', // Priority C: Recommended (Minimizing Arbitrary Choices and Cognitive Overhead)
 
     'standard'
-    
+
   ],
 
   plugins: [
     // https://eslint.vuejs.org/user-guide/#why-doesn-t-it-work-on-vue-files
     // required to lint *.vue files
     'vue',
-    
+
   ],
 
   globals: {
@@ -52,7 +52,7 @@ module.exports = {
 
   // add your custom rules here
   rules: {
-    
+
     // allow async-await
     'generator-star-spacing': 'off',
     // allow paren-less arrow functions
@@ -69,7 +69,9 @@ module.exports = {
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
     'import/no-extraneous-dependencies': 'off',
-    
+
+    'vue/multi-word-component-names': 'off',
+
     'prefer-promise-reject-errors': 'off',
 
     // allow debugger during development only
