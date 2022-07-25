@@ -67,9 +67,7 @@ export default defineComponent({
     const handleSubmit = async () => {
       try {
         if (isUpdated.value) {
-          await update(table, {
-            ...form
-          })
+          await update(table, form.value)
           notifySuccess('Edited successfully!')
         } else {
           await post(table, form.value)
