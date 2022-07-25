@@ -30,7 +30,7 @@
                                 Edit
                             </q-tooltip>
                         </q-btn>
-                        <q-btn icon="mdi-delete-outline" color="negative" dense size="sm">
+                        <q-btn icon="mdi-delete-outline" color="negative" dense size="sm" @click="handleRemoveCategory(props.row)">
                              <q-tooltip>
                                  Delete
                             </q-tooltip>
@@ -52,6 +52,7 @@ import { defineComponent, ref, onMounted } from 'vue'
 import useApi from 'src/composables/UseApi'
 import useNotify from 'src/composables/UseNotify'
 import { useRouter } from 'vue-router'
+import { useQuasar } from 'quasar'
 
 export default defineComponent({
   name: 'PageCategoryList',
@@ -62,14 +63,18 @@ export default defineComponent({
 
     const router = useRouter()
 
-    const { list } = useApi()
+    const { list, remove } = useApi()
 
-    const { notifyError } = useNotify()
+    const { notifyError, notifySuccess } = useNotify()
+
+    const $q = useQuasar()
+
+    const table = 'category'
 
     const handleListCategories = async () => {
       try {
         loading.value = true
-        categories.value = await list('category')
+        categories.value = await list(table)
         loading.value = false
       } catch (error) {
         notifyError(error.message)
@@ -80,6 +85,23 @@ export default defineComponent({
       router.push({ name: 'form-category', params: { id: category.id } })
     }
 
+    const handleRemoveCategory = async (category) => {
+      try {
+        $q.dialog({
+          title: 'Confirm',
+          message: `Do you really want to delete ${category.name}?`,
+          cancel: true,
+          persistent: true
+        }).onOk(async () => {
+          await remove(table, category.id)
+          notifySuccess('Category deleted!')
+          handleListCategories()
+        })
+      } catch (error) {
+        notifyError(error.message)
+      }
+    }
+
     onMounted(() => {
       handleListCategories()
     })
@@ -88,7 +110,8 @@ export default defineComponent({
       columns,
       categories,
       loading,
-      handleEdit
+      handleEdit,
+      handleRemoveCategory
     }
   }
 })
