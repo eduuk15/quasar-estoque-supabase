@@ -5,7 +5,7 @@
             <q-table
                 title="Category"
                 :rows="categories"
-                :columns="columns"
+                :columns="columnsCategory"
                 row-key="id"
                 class="col-12"
                 :loading="loading"
@@ -56,16 +56,13 @@
 </template>
 
 <script>
-const columns = [
-  { name: 'name', align: 'left', label: 'Name', field: 'name', sortable: true },
-  { name: 'actions', align: 'right', label: 'Action', field: 'actions', sortable: true }
-]
 
 import { defineComponent, ref, onMounted } from 'vue'
 import useApi from 'src/composables/UseApi'
 import useNotify from 'src/composables/UseNotify'
 import { useRouter } from 'vue-router'
 import { useQuasar } from 'quasar'
+import { columnsCategory } from './table'
 
 export default defineComponent({
   name: 'PageCategoryList',
@@ -120,7 +117,7 @@ export default defineComponent({
     })
 
     return {
-      columns,
+      columnsCategory,
       categories,
       loading,
       handleEdit,
