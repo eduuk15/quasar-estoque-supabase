@@ -23,7 +23,7 @@
                     label="Amount"
                     v-model="form.amount"
                     lazy-rules
-                    :rules="[val => (val && val.length > 0) || 'Amount is required']"
+                    :rules="[val => !!val || 'Amount is required']"
                     type="number"
                 />
 
@@ -31,7 +31,7 @@
                     label="Price"
                     v-model="form.price"
                     lazy-rules
-                    :rules="[val => (val && val.length > 0) || 'Price is required']"
+                    :rules="[val => !!val || 'Price is required']"
                     prefix="R$"
                 />
 
@@ -43,6 +43,7 @@
                   option-label="name"
                   map-options
                   emit-value
+                  :rules="[val => !!val || 'Category is required']"
                 />
 
                 <q-btn
