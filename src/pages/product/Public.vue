@@ -25,7 +25,7 @@
 
           <template v-slot:item="props">
             <div class="q-pa-xs col-xs-12 col-sm-6 col-md-4">
-              <q-card>
+              <q-card class="cursor-pointer" v-ripple:primary @click="handleShowDetails(props.row)">
                 <q-img :src="props.row.img_url" :ratio="4/3" />
                 <q-card-section class="text-center">
                   <div class="text-h6">{{ props.row.name }}</div>
@@ -36,6 +36,11 @@
           </template>
         </q-table>
       </div>
+      <dialog-product-details
+        :show="showDialogDetails"
+        :product="productDetails"
+        @hide-dialog="showDialogDetails = false"
+      />
     </q-page>
 </template>
 
@@ -46,9 +51,13 @@ import useNotify from 'src/composables/UseNotify'
 import { columnsProduct } from './table'
 import { useRoute } from 'vue-router'
 import { formatCurrency } from 'src/utils/format'
+import DialogProductDetails from 'components/DialogProductDetails.vue'
 
 export default defineComponent({
   name: 'PageProductPublic',
+  components: {
+    DialogProductDetails
+  },
   setup () {
     const products = ref([])
     const loading = ref(true)
@@ -57,6 +66,8 @@ export default defineComponent({
     const filter = ref('')
     const table = 'product'
     const route = useRoute()
+    const showDialogDetails = ref(false)
+    const productDetails = ref({})
 
     const handleListProducts = async (userId) => {
       try {
@@ -64,8 +75,13 @@ export default defineComponent({
         products.value = await listPublic(table, userId)
         loading.value = false
       } catch (error) {
-        notifyError('errou')
+        notifyError(error.message)
       }
+    }
+
+    const handleShowDetails = async (product) => {
+      productDetails.value = product
+      showDialogDetails.value = true
     }
 
     onMounted(() => {
@@ -79,7 +95,10 @@ export default defineComponent({
       products,
       loading,
       filter,
-      formatCurrency
+      formatCurrency,
+      showDialogDetails,
+      productDetails,
+      handleShowDetails
     }
   }
 })
