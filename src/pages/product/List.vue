@@ -3,7 +3,6 @@
     <q-page padding>
         <div class="row">
             <q-table
-                title="Category"
                 :rows="products"
                 :columns="columnsProduct"
                 row-key="id"
@@ -14,6 +13,16 @@
                 <span class="text-h6">
                     Product
                 </span>
+                <q-btn
+                  label="My Store"
+                  dense
+                  size="sm"
+                  outline
+                  class="q-ml-sm"
+                  icon="mdi-store"
+                  color="primary"
+                  @click="handleGoToStore"
+                />
                 <q-space />
                 <q-btn
                     v-if="$q.platform.is.desktop"
@@ -71,9 +80,10 @@ import useNotify from 'src/composables/UseNotify'
 import { useRouter } from 'vue-router'
 import { useQuasar } from 'quasar'
 import { columnsProduct } from './table'
+import useAuthUser from 'src/composables/UseAuthUser'
 
 export default defineComponent({
-  name: 'PageCategoryList',
+  name: 'PageProductList',
   setup () {
     const products = ref([])
 
@@ -81,7 +91,9 @@ export default defineComponent({
 
     const router = useRouter()
 
-    const { list, remove } = useApi()
+    const { listPublic, remove } = useApi()
+
+    const { user } = useAuthUser()
 
     const { notifyError, notifySuccess } = useNotify()
 
@@ -92,7 +104,7 @@ export default defineComponent({
     const handleListProducts = async () => {
       try {
         loading.value = true
-        products.value = await list(table)
+        products.value = await listPublic(table, user.value.id)
         loading.value = false
       } catch (error) {
         notifyError(error.message)
@@ -120,6 +132,11 @@ export default defineComponent({
       }
     }
 
+    const handleGoToStore = async () => {
+      const idUser = user.value.id
+      router.push({ name: 'product-public', params: { id: idUser } })
+    }
+
     onMounted(() => {
       handleListProducts()
     })
@@ -129,7 +146,8 @@ export default defineComponent({
       products,
       loading,
       handleEdit,
-      handleRemoveProduct
+      handleRemoveProduct,
+      handleGoToStore
     }
   }
 })
