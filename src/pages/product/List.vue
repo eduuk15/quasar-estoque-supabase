@@ -23,6 +23,16 @@
                   color="primary"
                   @click="handleGoToStore"
                 />
+                <q-btn
+                  label="Copy Link"
+                  dense
+                  size="sm"
+                  outline
+                  class="q-ml-sm"
+                  icon="mdi-content-copy"
+                  color="primary"
+                  @click="handleCopyPublicUrl"
+                />
                 <q-space />
                 <q-btn
                     v-if="$q.platform.is.desktop"
@@ -78,7 +88,7 @@ import { defineComponent, ref, onMounted } from 'vue'
 import useApi from 'src/composables/UseApi'
 import useNotify from 'src/composables/UseNotify'
 import { useRouter } from 'vue-router'
-import { useQuasar } from 'quasar'
+import { useQuasar, openURL, copyToClipboard } from 'quasar'
 import { columnsProduct } from './table'
 import useAuthUser from 'src/composables/UseAuthUser'
 
@@ -132,9 +142,24 @@ export default defineComponent({
       }
     }
 
+    const handleCopyPublicUrl = async () => {
+      const idUser = user.value.id
+      const link = router.resolve({ name: 'product-public', params: { id: idUser } })
+      const externalLink = window.origin + link.href
+      copyToClipboard(externalLink)
+        .then(() => {
+          notifySuccess('Successfully copied!')
+        })
+        .catch(() => {
+          notifyError('Error copied link.')
+        })
+    }
+
     const handleGoToStore = async () => {
       const idUser = user.value.id
-      router.push({ name: 'product-public', params: { id: idUser } })
+      const link = router.resolve({ name: 'product-public', params: { id: idUser } })
+      // router.push({ name: 'product-public', params: { id: idUser } })
+      openURL(window.origin + link.href)
     }
 
     onMounted(() => {
@@ -147,7 +172,8 @@ export default defineComponent({
       loading,
       handleEdit,
       handleRemoveProduct,
-      handleGoToStore
+      handleGoToStore,
+      handleCopyPublicUrl
     }
   }
 })

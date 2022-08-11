@@ -1,6 +1,11 @@
 
 <template>
     <q-page padding>
+      <div class="row" v-if="brand.name">
+        <div class="col-12 text-center text-h4">
+            {{ brand.name }}
+        </div>
+      </div>
       <div class="row">
         <q-table
           :rows="products"
@@ -61,7 +66,7 @@ export default defineComponent({
   setup () {
     const products = ref([])
     const loading = ref(true)
-    const { listPublic } = useApi()
+    const { listPublic, brand } = useApi()
     const { notifyError } = useNotify()
     const filter = ref('')
     const table = 'product'
@@ -98,7 +103,8 @@ export default defineComponent({
       formatCurrency,
       showDialogDetails,
       productDetails,
-      handleShowDetails
+      handleShowDetails,
+      brand
     }
   }
 })
