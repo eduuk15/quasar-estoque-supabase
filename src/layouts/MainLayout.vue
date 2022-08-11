@@ -54,11 +54,12 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, onMounted } from 'vue'
 import EssentialLink from 'components/EssentialLink.vue'
 import useAuthUser from 'src/composables/UseAuthUser'
 import { useRouter } from 'vue-router'
 import { useQuasar } from 'quasar'
+import useApi from 'src/composables/UseApi'
 
 const linksList = [
   {
@@ -78,6 +79,12 @@ const linksList = [
     caption: '',
     icon: 'mdi-archive',
     routeName: 'product'
+  },
+  {
+    title: 'Config',
+    caption: '',
+    icon: 'mdi-cog',
+    routeName: 'form-config'
   }
 ]
 
@@ -92,10 +99,13 @@ export default defineComponent({
     const leftDrawerOpen = ref(false)
 
     const $q = useQuasar()
-
     const router = useRouter()
-
     const { logout } = useAuthUser()
+    const { getBrand } = useApi()
+
+    onMounted(() => {
+      getBrand()
+    })
 
     const handleLogout = async () => {
       $q.dialog({
