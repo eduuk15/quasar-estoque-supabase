@@ -63,17 +63,18 @@ import useNotify from 'src/composables/UseNotify'
 import { useRouter } from 'vue-router'
 import { useQuasar } from 'quasar'
 import { columnsCategory } from './table'
+import useAuthUser from 'src/composables/UseAuthUser'
 
 export default defineComponent({
   name: 'PageCategoryList',
   setup () {
     const categories = ref([])
-
     const loading = ref(true)
-
     const router = useRouter()
 
-    const { list, remove } = useApi()
+    const { user } = useAuthUser()
+
+    const { listPublic, remove } = useApi()
 
     const { notifyError, notifySuccess } = useNotify()
 
@@ -84,7 +85,7 @@ export default defineComponent({
     const handleListCategories = async () => {
       try {
         loading.value = true
-        categories.value = await list(table)
+        categories.value = await listPublic(table, user.value.id)
         loading.value = false
       } catch (error) {
         notifyError(error.message)
