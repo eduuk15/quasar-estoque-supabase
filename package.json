@@ -10,16 +10,16 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.0.0",
+    "@quasar/extras": "^1.15.1",
     "@supabase/supabase-js": "^1.35.4",
     "axios": "^0.21.1",
-    "quasar": "^2.6.0",
+    "quasar": "^2.7.7",
     "uuid": "^8.3.2",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0"
   },
   "devDependencies": {
-    "@quasar/app-vite": "^1.0.0",
+    "@quasar/app-vite": "^1.0.6",
     "autoprefixer": "^10.4.2",
     "eslint": "^8.10.0",
     "eslint-config-standard": "^17.0.0",
