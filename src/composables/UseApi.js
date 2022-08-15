@@ -39,6 +39,18 @@ export default function useApi () {
     return data
   }
 
+  const fetchCount = async (table, userId) => {
+    const { data, error, count } = await supabase
+      .from(table)
+      .select('*', { count: 'exact' })
+      .eq('user_id', userId)
+    if (error) throw error
+    return {
+      data,
+      count
+    }
+  }
+
   const getById = async (table, id) => {
     const { data, error } = await supabase
       .from(table)
@@ -129,6 +141,7 @@ export default function useApi () {
     remove,
     uploadImg,
     getBrand,
-    brand
+    brand,
+    fetchCount
   }
 }
