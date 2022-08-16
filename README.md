@@ -1,6 +1,6 @@
 # Aplicativo Quasar + Vue + Supabase
 
-Aplicativo desenvolvido com VueJS, Quasar Framework e banco de dados Supabase
+Aplicativo de estoque desenvolvido com VueJS, Quasar Framework e banco de dados Supabase
 
 ## URL
 
