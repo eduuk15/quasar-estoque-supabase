@@ -1,6 +1,10 @@
-# Quasar App (quasar-estoque-supabase)
+# Aplicativo Quasar + Vue + Supabase
 
-A Quasar Project
+Aplicativo de estoque desenvolvido com VueJS, Quasar Framework e banco de dados Supabase
+
+## URL
+
+https://quasar-supabase-eduuk15.netlify.app/
 
 ## Install the dependencies
 ```bash
@@ -31,3 +35,7 @@ quasar build
 
 ### Customize the configuration
 See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+
+## Obrigado Patrick Monteiro!!!
+
+https://www.youtube.com/c/PatrickMonteiroEng
