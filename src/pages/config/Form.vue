@@ -61,7 +61,7 @@ import { useRouter } from 'vue-router'
 import useApi from 'src/composables/UseApi'
 import useNotify from 'src/composables/UseNotify'
 import useBrand from 'src/composables/UseBrand'
-import userAuthUser from 'src/composables/UseAuthUser'
+import useAuthUser from 'src/composables/UseAuthUser'
 
 export default defineComponent({
   name: 'PageFormConfig',
@@ -71,7 +71,7 @@ export default defineComponent({
     const { post, listPublic, update, uploadImg } = useApi()
     const { notifyError, notifySuccess } = useNotify()
     const { setBrand } = useBrand()
-    const { user } = userAuthUser()
+    const { user } = useAuthUser()
 
     let config = {}
     const paralax = ref([])
