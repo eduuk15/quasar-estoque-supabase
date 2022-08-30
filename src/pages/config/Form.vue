@@ -48,7 +48,7 @@
                     class="full-width"
                     rounded
                     flat
-                    :to="{ name: 'category' }"
+                    :to="{ name: 'config' }"
                 />
             </q-form>
         </div>
@@ -75,6 +75,7 @@ export default defineComponent({
 
     let config = {}
     const paralax = ref([])
+
     const form = ref({
       name: '',
       phone: '',
@@ -110,7 +111,9 @@ export default defineComponent({
     const handleGetConfig = async () => {
       try {
         config = await listPublic(table, user.value.id)
-        form.value = config[0]
+        if (config.length > 0) {
+          form.value = config[0]
+        }
       } catch (error) {
         notifyError(error.message)
       }
