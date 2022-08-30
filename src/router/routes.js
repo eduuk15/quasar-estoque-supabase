@@ -23,7 +23,6 @@ const routes = [
       { path: 'product/:id?', name: 'product', component: () => import('pages/product/List.vue') },
       { path: 'form-product/:id?', name: 'form-product', component: () => import('pages/product/Form.vue') },
       { path: 'form-config/:id?', name: 'form-config', component: () => import('pages/config/Form.vue') }
-      // { path: '', component: () => import('pages/IndexPage.vue') }
     ],
     meta: {
       requiresAuth: true
