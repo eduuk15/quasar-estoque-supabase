@@ -36,6 +36,7 @@ quasar build
 ### Customize the configuration
 See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
 
-## Obrigado Patrick Monteiro!!!
+## Obrigado WDEV!!!
 
-https://www.youtube.com/c/PatrickMonteiroEng
+https://www.youtube.com/c/WDEVoficial
+
