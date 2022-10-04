@@ -39,3 +39,4 @@ See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-
 ## Obrigado Patrick Monteiro!!!
 
 https://www.youtube.com/c/PatrickMonteiroEng
+
