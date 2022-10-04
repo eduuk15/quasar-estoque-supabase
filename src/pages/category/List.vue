@@ -3,7 +3,7 @@
     <q-page padding>
         <div class="row">
             <q-table
-                title="Category"
+                title="Categorias"
                 :rows="categories"
                 :columns="columnsCategory"
                 row-key="id"
@@ -12,12 +12,12 @@
             >
             <template v-slot:top>
                 <span class="text-h6">
-                    Category
+                    Categoria
                 </span>
                 <q-space />
                 <q-btn
                     v-if="$q.platform.is.desktop"
-                    label="Add New"
+                    label="Adicionar"
                     color="primary"
                     icon="mdi-plus"
                     dense
@@ -28,12 +28,12 @@
                     <q-td :props="props" class="q-gutter-x-sm">
                         <q-btn icon="mdi-pencil-outline" color="info" dense size="sm" @click="handleEdit(props.row)">
                             <q-tooltip>
-                                Edit
+                                Editar
                             </q-tooltip>
                         </q-btn>
                         <q-btn icon="mdi-delete-outline" color="negative" dense size="sm" @click="handleRemoveCategory(props.row)">
                              <q-tooltip>
-                                 Delete
+                                 Remover
                             </q-tooltip>
                         </q-btn>
                     </q-td>

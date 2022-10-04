@@ -3,26 +3,26 @@
         <div class="row justify-center">
             <div class="col-12 text-center">
                 <p class="text-h6">
-                    Form Config
+                    Configurações da Loja
                 </p>
             </div>
             <q-form class="col-md7 col-xs-12 col-sm-12 q-gutter-y-md" @submit.prevent="handleSubmit">
                 <q-input
-                    label="Store Name"
+                    label="Nome da loja"
                     v-model="form.name"
                     lazy-rules
-                    :rules="[val => (val && val.length > 0) || 'Name is required']"
+                    :rules="[val => (val && val.length > 0) || 'O nome é obrigatório!']"
                 />
 
                 <q-input
-                    label="Phone"
+                    label="Contato (WhatsApp)"
                     v-model="form.phone"
                     mask="(##) #####-####"
                     unmasked-value
                 />
 
                 <q-input
-                  label="Image Paralax"
+                  label="Imagem da Loja"
                   stack-label
                   v-model="paralax"
                   type="file"
@@ -35,7 +35,7 @@
                 </div>
 
                 <q-btn
-                    label="Save"
+                    label="Salvar"
                     color="primary"
                     class="full-width"
                     rounded
@@ -43,7 +43,7 @@
                 />
 
                 <q-btn
-                    label="Cancel"
+                    label="Cancelar"
                     color="primary"
                     class="full-width"
                     rounded

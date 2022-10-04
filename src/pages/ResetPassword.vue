@@ -1,19 +1,19 @@
 <template>
 <q-page padding>
     <q-form class="row justify-center" @submit.prevent="handlePasswordReset">
-          <p class="col-12 text-h5 text-center"> Reset Password </p>
+          <p class="col-12 text-h5 text-center"> Nova Senha </p>
           <div class="col-md-4 col-sm-6 col-xs-10 q-gutter-y-md">
 
             <q-input
-                label="New Password"
+                label="Nova Senha"
                 v-model="password"
                 lazy-rules
-                :rules="[val => (val && val.length >= 6) || 'Password is required and it has to contain 6 or more characters']"
+                :rules="[val => (val && val.length >= 6) || 'A senha é obrigatória e deve conter 6 ou mais caracteres!']"
             />
 
             <div class="full-widht q-pt-md q-gutter-y-sm">
                 <q-btn
-                    label="Register new password"
+                    label="Registrar nova senha"
                     color="primary"
                     class="full-width"
                     outline

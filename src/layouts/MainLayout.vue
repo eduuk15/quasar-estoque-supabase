@@ -80,21 +80,21 @@ const linksList = [
     routeName: 'me'
   },
   {
-    title: 'Category',
+    title: 'Categorias',
     caption: '',
     icon: 'mdi-shape-outline',
     routeName: 'category'
   },
   {
-    title: 'Product',
+    title: 'Produtos',
     caption: '',
     icon: 'mdi-archive',
     routeName: 'product'
   },
   {
-    title: 'Config',
+    title: 'Loja',
     caption: '',
-    icon: 'mdi-cog',
+    icon: 'mdi-store',
     routeName: 'form-config'
   }
 ]
@@ -122,7 +122,7 @@ export default defineComponent({
     const handleLogout = async () => {
       $q.dialog({
         title: 'Logout',
-        message: 'Do you really want to leave?',
+        message: 'Realmente deseja sair?',
         cancel: true,
         persistent: true
       }).onOk(async () => {

@@ -3,59 +3,60 @@
         <div class="row justify-center">
             <div class="col-12 text-center">
                 <p class="text-h6">
-                    Form Product
+                    Novo Produto
                 </p>
             </div>
             <q-form class="col-md7 col-xs-12 col-sm-12 q-gutter-y-md" @submit.prevent="handleSubmit">
 
                 <q-input
-                  label="Image"
+                  label="Imagem do produto"
                   stack-label
                   v-model="img"
                   type="file"
                   accept="image/*"
                 />
                 <q-input
-                    label="Name"
+                    label="Nome do produto"
                     v-model="form.name"
                     lazy-rules
-                    :rules="[val => (val && val.length > 0) || 'Name is required']"
+                    :rules="[val => (val && val.length > 0) || 'O nome é obrigatório!']"
                 />
 
                 <q-editor
+                  placeholder="Descrição do produto"
                   v-model="form.description"
                   min-height="5rem"
                 />
 
                 <q-input
-                    label="Amount"
+                    label="Quantidade em estoque"
                     v-model="form.amount"
                     lazy-rules
-                    :rules="[val => !!val || 'Amount is required']"
+                    :rules="[val => !!val || 'A quantidade é obrigatória!']"
                     type="number"
                 />
 
                 <q-input
-                    label="Price"
+                    label="Preço do produto"
                     v-model="form.price"
                     lazy-rules
-                    :rules="[val => !!val || 'Price is required']"
+                    :rules="[val => !!val || 'O preço é obrigatório!']"
                     prefix="R$"
                 />
 
                 <q-select
                   v-model="form.category_id"
                   :options="optionsCategory"
-                  label="Category"
+                  label="Categoria"
                   option-value="id"
                   option-label="name"
                   map-options
                   emit-value
-                  :rules="[val => !!val || 'Category is required']"
+                  :rules="[val => !!val || 'A categoria é obrigatória!']"
                 />
 
                 <q-btn
-                    :label="isUpdated ? 'Update' : 'Save'"
+                    :label="isUpdated ? 'Editar' : 'Adicionar'"
                     color="primary"
                     class="full-width"
                     rounded
@@ -63,7 +64,7 @@
                 />
 
                 <q-btn
-                    label="Cancel"
+                    label="Cancelar"
                     color="primary"
                     class="full-width"
                     rounded
@@ -127,10 +128,10 @@ export default defineComponent({
         }
         if (isUpdated.value) {
           await update(table, form.value)
-          notifySuccess('Edited successfully!')
+          notifySuccess('Produto editado com sucesso!')
         } else {
           await post(table, form.value)
-          notifySuccess('Saved successfully!')
+          notifySuccess('Produto adicionado com sucesso!')
         }
         router.push({ name: 'product' })
       } catch (error) {

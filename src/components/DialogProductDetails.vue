@@ -26,10 +26,10 @@
             </q-card-section>
 
             <q-card-actions align="right">
-                <q-btn label="Cancel" color="primary" outline v-close-popup />
+                <q-btn label="Voltar" color="primary" outline v-close-popup />
                 <q-btn
                 v-if="brand.phone"
-                    label="Contact"
+                    label="Contato"
                     icon="mdi-whatsapp"
                     color="green-7"
                     @click="handleSendWpp"

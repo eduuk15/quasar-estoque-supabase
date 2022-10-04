@@ -1,34 +1,34 @@
 <template>
   <q-page padding>
     <q-form class="row justify-center" @submit.prevent="handleRegister">
-          <p class="col-12 text-h5 text-center"> Register </p>
+          <p class="col-12 text-h5 text-center"> Registre-se </p>
           <div class="col-md-4 col-sm-6 col-xs-10 q-gutter-y-md">
             <q-input
-                label="Name"
+                label="Nome"
                 v-model="form.name"
                 lazy-rules
-                :rules="[val => (val && val.length > 0) || 'Name is required']"
+                :rules="[val => (val && val.length > 0) || 'O nome é obrigatório!']"
             />
 
             <q-input
-                label="Email"
+                label="E-mail"
                 v-model="form.email"
                 lazy-rules
-                :rules="[val => (val && val.length > 0) || 'Email is required']"
+                :rules="[val => (val && val.length > 0) || 'O e-mail é obrigatório!']"
                 type="email"
             />
 
             <q-input
-                label="Password"
+                label="Senha"
                 v-model="form.password"
                 lazy-rules
-                :rules="[val => (val && val.length >= 6) || 'Password is required and it has to contain 6 or more characters']"
+                :rules="[val => (val && val.length >= 6) || 'A senha é obrigatória e deve conter 6 ou mais caracteres!']"
                 type="password"
             />
 
             <div class="full-widht q-pt-md q-gutter-y-sm">
                 <q-btn
-                    label="Register"
+                    label="Registrar"
                     color="primary"
                     class="full-width"
                     outline
@@ -37,7 +37,7 @@
                 />
 
                 <q-btn
-                    label="Back"
+                    label="Voltar ao login"
                     color="black"
                     class="full-width"
                     rounded

@@ -11,10 +11,10 @@
             >
             <template v-slot:top>
                 <span class="text-h6">
-                    Product
+                    Produtos
                 </span>
                 <q-btn
-                  label="My Store"
+                  label="Minha loja"
                   dense
                   size="sm"
                   outline
@@ -24,7 +24,7 @@
                   @click="handleGoToStore"
                 />
                 <q-btn
-                  label="Copy Link"
+                  label="Copiar o link da loja"
                   dense
                   size="sm"
                   outline
@@ -36,7 +36,7 @@
                 <q-space />
                 <q-btn
                     v-if="$q.platform.is.desktop"
-                    label="Add New"
+                    label="Adicionar"
                     color="primary"
                     icon="mdi-plus"
                     dense
@@ -55,12 +55,12 @@
                     <q-td :props="props" class="q-gutter-x-sm">
                         <q-btn icon="mdi-pencil-outline" color="info" dense size="sm" @click="handleEdit(props.row)">
                             <q-tooltip>
-                                Edit
+                                Editar
                             </q-tooltip>
                         </q-btn>
                         <q-btn icon="mdi-delete-outline" color="negative" dense size="sm" @click="handleRemoveProduct(props.row)">
                              <q-tooltip>
-                                 Delete
+                                 Remover
                             </q-tooltip>
                         </q-btn>
                     </q-td>

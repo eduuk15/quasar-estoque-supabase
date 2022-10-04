@@ -3,19 +3,19 @@
         <div class="row justify-center">
             <div class="col-12 text-center">
                 <p class="text-h6">
-                    Form Category
+                    Nova categoria
                 </p>
             </div>
             <q-form class="col-md7 col-xs-12 col-sm-12 q-gutter-y-md" @submit.prevent="handleSubmit">
                 <q-input
-                    label="Name"
+                    label="Nome da categoria"
                     v-model="form.name"
                     lazy-rules
-                    :rules="[val => (val && val.length > 0) || 'Name is required']"
+                    :rules="[val => (val && val.length > 0) || 'O nome é obrigatório!']"
                 />
 
                 <q-btn
-                    :label="isUpdated ? 'Update' : 'Save'"
+                    :label="isUpdated ? 'Editar' : 'Adicionar'"
                     color="primary"
                     class="full-width"
                     rounded
@@ -23,7 +23,7 @@
                 />
 
                 <q-btn
-                    label="Cancel"
+                    label="Cancelar"
                     color="primary"
                     class="full-width"
                     rounded
